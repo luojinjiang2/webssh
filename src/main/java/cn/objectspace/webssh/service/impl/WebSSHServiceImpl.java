@@ -88,7 +88,12 @@ public class WebSSHServiceImpl implements WebSSHService {
                         connectToSSH(sshConnectInfo, finalWebSSHData, session);
                     } catch (JSchException | IOException e) {
                         logger.error("webssh连接异常");
-                        logger.error("异常信息:{}", e.getMessage());
+                        logger.error("异常信息111:{}", e.getMessage());
+                        try {
+                            transToSSH(sshConnectInfo.getChannel(), e.getMessage());
+                        } catch (IOException e1) {
+                            e1.printStackTrace();
+                        }
                         close(session);
                     }
                 }
@@ -195,4 +200,5 @@ public class WebSSHServiceImpl implements WebSSHService {
             outputStream.flush();
         }
     }
+
 }

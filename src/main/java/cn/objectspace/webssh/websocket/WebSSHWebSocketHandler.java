@@ -48,7 +48,7 @@ public class WebSSHWebSocketHandler implements WebSocketHandler{
             //调用service接收消息
             webSSHService.recvHandle(((TextMessage) webSocketMessage).getPayload(), webSocketSession);
         } else if (webSocketMessage instanceof BinaryMessage) {
-
+            logger.info("用户发送的是二进制指令");
         } else if (webSocketMessage instanceof PongMessage) {
 
         } else {
